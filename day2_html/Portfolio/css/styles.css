@@ -8,6 +8,9 @@
 }
 h3 {
     text-indent: 50px;
+    line-height: 2rem;
+    width: 95%;
+    margin: auto;
 }
 .contactme {
     margin-left: 20px;
