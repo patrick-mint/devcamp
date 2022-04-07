@@ -1,0 +1,46 @@
+.mypic {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+.aboutme {
+    text-align: center;
+}
+h3 {
+    text-indent: 50px;
+}
+.contactme {
+    margin-left: 20px;
+}
+
+/* portfolio */
+.row1 {
+    text-align: center;
+}
+
+.mypic1 {
+    height: 30px;
+}
+
+.space {
+    padding-left: 20px;
+    padding-right : 20px;
+}
+
+.flex{
+    display: flex;
+    
+}
+
+td {
+    width: 200px;
+}
+fieldset {
+    width: 500px;
+    margin: auto;
+}
+
+.center {
+    margin: auto;
+    width: 25%
+}
