@@ -19,6 +19,7 @@ h3 {
 /* portfolio */
 .row1 {
     text-align: center;
+    margin: auto
 }
 
 .mypic1 {
@@ -35,15 +36,23 @@ h3 {
     
 }
 
-td {
-    width: 200px;
-}
 fieldset {
-    width: 500px;
+    width: 600px;
     margin: auto;
 }
 
 .center {
     margin: auto;
-    width: 25%
+    
+
+}
+
+td {
+    text-indent: 60px;
+    width: 250px;
+}
+
+.centerform {
+    width: 25%;
+    padding-left: 50px;
 }
