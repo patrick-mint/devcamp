@@ -1,0 +1,20 @@
+fieldset {
+    width: 600px;
+    margin: auto;
+}
+
+.center {
+    margin: auto;
+    
+
+}
+
+td {
+    text-indent: 60px;
+    width: 250px;
+}
+
+.centerform {
+    width: 25%;
+    padding-left: 50px;
+}

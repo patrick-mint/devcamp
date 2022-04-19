@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial;
+    text-align: left;
+  }
+  
+  .header {
+    text-align: left;
+    padding: 32px;
+  }
+  
+  .MobileContent {
+
+    display: none;
+  text-align:right;
+  color: red;
+
+}
+
+.DesktopContent {
+  text-align:right;
+  color: blue;
+}
+
+
+@media screen and (max-width: 500px) {
+
+.MobileContent {
+
+    display:block;
+
+}
+.DesktopContent {
+  display:none;
+}
+
+}
+
