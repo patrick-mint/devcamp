@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let aUser = [];
+         function getUser(userId, callback) {
+            axios.get("https://reqres.in/api/users/"+userId).then(function (response) {
+                console.log(response.data.data)
+                aUser.push(response.data.data)
+                callback();
+            })
+        }
+        getUser(7, function(){
+            getUser(8, function(){
+                console.log(aUser);
+                let resultDisplay = document.getElementById("resultDisplay");
+                resultDisplay.innerHTML = "<h1> Hello World</h1>"
+            });
+        });
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="resultDisplay"></div>
+
+
+
+</body>
+</html>
