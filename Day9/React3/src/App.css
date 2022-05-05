@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+  
+}
+
+.title {
+  text-align: center;
+  background-color: #005555;
+  color: white;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+body {
+  background-color: #68A7AD;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.footer{
+  text-align: center;
+  background-color: #0AA1DD;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.space {
+  
+  margin-left: 15px;
+}
+
+.text {
+  width:60%; 
+  text-align: center;
+  border-radius: 10px 100px / 120px;
+  
+
+  
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  padding: 5px;
+}
+/* Add some padding inside the card container */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.flex-container > div {
+  background-color: #E8F9FD;
+
+  width: 20%;
+  margin: 15px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+

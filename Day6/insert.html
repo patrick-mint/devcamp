@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"> +ADD </button>
+    <div id="result"></div>
+
+
+
+<script>
+    const btn = document.getElementById("btn");
+    const result = document.getElementById("result");
+
+    function insertNode () {
+        let tagP = document.createElement("p");
+        tagP.innerText = "Hello, today is " + new Date ();
+        tagP.style.fontSize = "10px";
+
+        result.appendChild(tagP);
+    }
+
+btn.addEventListener("click", insertNode);
+</script>
+
+</body>
+</html>
