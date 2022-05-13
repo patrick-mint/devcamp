@@ -9,9 +9,12 @@ function WarehouseProductDetail() {
     
     <div>
       <h1 >Warehouse Information</h1>
-    <>
-  <p>You entered to {param.id} warehouse</p></>
-
+    <p>ID: {param.id}</p>
+    <p>Name: {param.warehouseName}</p>
+    <p>Latitude: {param.latitude}</p>
+    <p>Longitude: {param.longitude}</p>
+    <p>Tel: {param.Tel}</p>
+    <p>Fax: {param.fax}</p>
       <p><button
       onClick={() => {
         navigate("/warehouselocation");

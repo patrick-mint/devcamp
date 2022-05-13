@@ -38,10 +38,10 @@ function Warehouse() {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div style = {{margin : "10px"}}>
     <h1>Warehouse Location</h1>
     <><h2>Our Warehouse</h2><ul>
-    {warehouseList.map(x => <li><Link to={`${x.id}`}>{x.warehouseName}</Link></li>)}
+    {warehouseList.map(x => <li><Link to={`${x.id}/${x.warehouseName}/${x.latitude}/${x.longitude}/${x.Tel}/${x.fax}`}> <p>{x.warehouseName}</p> </Link></li>)}
     </ul></>
     <p><button
       onClick={() => {

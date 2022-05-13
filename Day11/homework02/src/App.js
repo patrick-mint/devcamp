@@ -21,7 +21,7 @@ function App() {
     <Route path="shop" element={<Shop/>}/>
     <Route path="shop/:id" element={<ProductDetail />} />
     <Route path="warehouselocation" element={<Warehouse/>}/>
-    <Route path="warehouselocation/:id" element={<WarehouseProductDetail />} />
+    <Route path="warehouselocation/:id/:warehouseName/:latitude/:longitude/:Tel/:fax" element={<WarehouseProductDetail />} />
     <Route path="contact" element={<Contact/>}/>
     <Route path="*" element={<ErrorPage/>}/>
   </Routes>
