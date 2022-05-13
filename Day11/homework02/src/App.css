@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: #005555;
+}
+p {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.footer {
+  margin-top: 2%;
+  text-align: center;
+  color: #FF4949;
+}
+

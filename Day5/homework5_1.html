@@ -29,7 +29,7 @@
 
 
 <script>
-    axios.get("https://reqres.in/api/users").then(function(response) {
+    axios.get("http://localhost:3000/api/users").then(function(response) {
         console.log(response.data.data);
         let rowDisplay = document.getElementById('rowDisplay')
         let textHtml = '';

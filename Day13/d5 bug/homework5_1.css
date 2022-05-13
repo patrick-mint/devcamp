@@ -1,0 +1,15 @@
+#rowDisplay .col {
+   
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
