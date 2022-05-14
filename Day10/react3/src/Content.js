@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
 import { Modal, Form, Input, InputNumber, Button, Radio , Select , DatePicker, Checkbox  } from 'antd';
@@ -11,6 +11,7 @@ function onCheck(e) {
 }
 
 // Disable Date
+const { RangePicker } = DatePicker;
 
 function disabledDate(current) {
   // Can not select days before today and today
@@ -53,9 +54,6 @@ const customAgeRangValidation = (rule, value) => {
   }
 };
 
-
-
-/* eslint-enable no-template-curly-in-string */
 /****Option Select***/
 
 const { Option } = Select;
@@ -69,8 +67,28 @@ function onSearch(val) {
 }
 
 const ContentComponent = () => {
-  const onFinish = (values) => {
-    console.log(values);
+
+  const onFinish = async(values) => {
+    Modal.info({
+      content: (
+        <pre>
+          Full Name: {values.Fullname}
+          <br />
+          Age: {values.age}
+          <br />
+          Gender: {values.sex}
+          <br />
+          Province: {values.province}
+          <br />
+          Others: {values.other !== undefined ? values.other : ""}
+          <br />
+          Member Period:
+          {` ${values.memberperiod[0]._d} to ${values.memberperiod[1]._d}`}
+          <br />
+          
+        </pre>
+      ),
+    });
   };
 
   return (
@@ -79,8 +97,8 @@ const ContentComponent = () => {
     validateMessages={validateMessages }
     autoComplete={"off"}>
       <Form.Item 
-        name={['Firstname']}
-        label="First Name"
+        name={['Fullname']}
+        label="Full Name"
         rules={[
           {
             min: 1,
@@ -115,15 +133,15 @@ const ContentComponent = () => {
         ]}
         >
       <Radio.Group style={{marginBottom: '20px'}} >
-                    <Radio value={1}>Male</Radio>
-                    <Radio value={2}>Female</Radio>
-                    <Radio value={3}>Others</Radio>
+                    <Radio value='male'>Male</Radio>
+                    <Radio value='female'>Female</Radio>
+                    <Radio value={'others'}>Others</Radio>
                 </Radio.Group>
                 </Form.Item>
-      <Form.Item name={['province']}
+      <Form.Item initialValue="Bangkok" name={['province']}
         label="Province"
         >
-                <Select defaultValue="Bangkok"
+                <Select
                     showSearch
                     placeholder="Select a Province"
                     optionFilterProp="children"
@@ -137,7 +155,7 @@ const ContentComponent = () => {
                     <Option value="Phuket">Phuket</Option>
                     <Option value="Khon Kaen">Khon Kaen</Option>
                     <Option value="Krabi">Krabi</Option>
-                    <Option value="other">Others</Option>  
+                    <Option value="others">Others</Option>  
                 </Select>
       </Form.Item>
       <Form.Item
@@ -145,10 +163,10 @@ const ContentComponent = () => {
         shouldUpdate={(prevValues, currentValues) => prevValues.province !== currentValues.province}
       >
         {({ getFieldValue }) =>
-          getFieldValue('province') === 'other' ? (
+          getFieldValue('province') === 'others' ? (
             <Form.Item
-              name="customizeProvince"
-              label="Province"
+              name="other"
+              label="Other"
               rules={[
                 {
                   required: true,
@@ -162,17 +180,11 @@ const ContentComponent = () => {
         }
       </Form.Item>
 
-      <Form.Item name={['datePicker']} 
-      label="Member Period">
-     
-    
-    <DatePicker picker = "date"
-      format="YYYY-MM-DD"
-      disabledDate={disabledDate}
-     
-    />
-           
+      <Form.Item name="memberperiod" label="Member Period">
+        <RangePicker disabledDate={disabledDate} />
       </Form.Item>
+
+
       <Form.Item name={['agreement']} wrapperCol={{ offset: 6 }} valuePropName="checked" 
       
       rules={[
