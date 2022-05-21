@@ -16,7 +16,6 @@ const layout = {
 
 const Employee = () => {
   const onFinish = (values) => {
-    console.log("Success:", values);
     const myFunction = async ()=> {
       await axios.post("http://localhost:3001/api/employee", {
         firstname: values.Firstname,
@@ -37,6 +36,7 @@ const Employee = () => {
         position: values.position,
         id_number: values.id_number,
       });
+      
       alert("Thank you for submitting the form!")
       document.getElementById('resetForm').reset();
     };

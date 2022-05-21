@@ -12,7 +12,6 @@ app.use(
   })
 );
 
-
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -86,6 +85,7 @@ app.get("/api/employee/:id", (req, res) => {
 });
 
 app.post("/api/company", (req, res) => {
+  console.log(req.body);
     const connection = mysql.createConnection({
         host: 'localhost',
       user: 'root',
