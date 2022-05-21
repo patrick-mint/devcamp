@@ -38,7 +38,8 @@ const Employee = () => {
         id_number: values.id_number,
       });
       alert("Thank you for submitting the form!")
-    }
+      document.getElementById('resetForm').reset();
+    };
     myFunction();
   };
          
@@ -47,7 +48,10 @@ const Employee = () => {
     <>
     <h1> Personnel Section</h1>
     
-    <Form {...layout} name="nest-messages" 
+    <Form 
+    {...layout} 
+    id = "resetForm"
+    name="nest-messages" 
     onFinish={onFinish} 
     autoComplete={"off"}>
       <Form.Item 
