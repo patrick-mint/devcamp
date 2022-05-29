@@ -1,7 +1,7 @@
 import { Button, Form, Input, Space } from 'antd';
 import "antd/dist/antd.css";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 export default function Login() {
  const [form] = Form.useForm();
@@ -64,12 +64,14 @@ export default function Login() {
          </Form.Item>
 
        
-         <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
+         <Form.Item wrapperCol={{span:20, offset: 8 }}>
            <Button type="danger" htmlType="submit">
              Login
-           </Button>
+           </Button> 
+           <Link style={{ margin : 10}}to="/register"><button type="button"> Register  </button></Link>
          </Form.Item>
        </Form>
+       
      </Space>
    </div>
  );

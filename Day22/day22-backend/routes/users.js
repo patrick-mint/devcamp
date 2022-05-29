@@ -1,17 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require ("mysql2/promise");
-const bcrypt = require ("bcrypt");
 const jwt = require('jsonwebtoken');
-
+const mysql = require('mysql2/promise');
+const bcrypt = require('bcrypt');
+// const Connection = require('mysql2/typings/mysql/lib/Connection');
+const res = require('express/lib/response');
+const { json } = require('express/lib/response');
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', async function(req, res, next) {
   res.send('respond with a resource');
- });
- 
- 
- router.post('/', async function (req, res) {
+});
+
+router.post('/', async function (req, res) {
   const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root', // <== ระบุให้ถูกต้อง
@@ -28,34 +29,21 @@ router.get('/', function (req, res, next) {
   ); // insert ข้อมูล
  
   // ปิด connection
-  await connection.end();
- 
-  // ตอบกลับ client เป็น id ของ user ที่ insert
+  await connection.end();  
   res.send({ id: result[0].insertId });
- });
+
+});
+
+router.get('/mycart', async function (req, res) {
   
- router.get('/mycart', async function (req, res) {
-  let token = req.headers.authorization;
-  if (!token) {
-    res.status(401).send('Unauthorized');
-  } else {
-    try {
-      // remove 'Bearer' prefix to validate pure token value
-      const decoded = jwt.verify(
-        token.replace('Bearer', '').trim(),
-        'codecamp_very_$secr3T!'
-      );
-      console.log(decoded);
-      // query user-specific information with decoded as a JSON object
- 
-      res.send([
+      res.json([
         { item: 'Product A selected' },
         { item: 'Product B selected' },
       ]);
-    } catch (e) {
-      res.status(401).send('Unauthorized');
-    }
-  }
-}); 
+
+ });
+ 
+
+
 
 module.exports = router;

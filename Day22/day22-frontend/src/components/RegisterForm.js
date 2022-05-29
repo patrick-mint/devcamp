@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Form, Input, Button } from 'antd';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 import '../App.css';
 
 
@@ -114,12 +114,13 @@ const RegisterForm = () => {
         <Input />
       </Form.Item>
      
-      <Form.Item wrapperCol={{span:2, offset: 11 }}>
-        <Button block type="danger" htmlType="submit">
-          Submit
-        </Button>
-     
+      <Form.Item wrapperCol={{span:20, offset: 10 }}>
+      <Button type="danger" htmlType="submit">
+             Submit
+           </Button> 
+        <Link style={{ margin : 10}} to="/login"><button type="button"> Back to Login </button></Link>
       </Form.Item>
+
     </Form>
     </>
   );

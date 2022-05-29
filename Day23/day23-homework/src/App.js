@@ -1,54 +1,94 @@
-import React, { Component } from "react";
+import "./App.css";
+import React from "react";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = { name: "Unknown User" };
+class App extends React.Component {
+  render() {
+    return <Test />;
   }
+}
+
+class Test extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Unknown User",
+      history: [],
+    };
+  }
+  //Method จะทำงานเมื่อทำการ Render เสร็จ ซึ่ง Method จะทำงานเพียงครั้งเดียว เช่น ยิง API
   componentDidMount() {
-    const name = prompt("Type your name !");
+    const name = prompt("Please enter your name: ");
     this.setState({ name: name });
   }
+  //Method ที่ทำงานเมื่อมีการเปลี่ยน Props หรือ state โดยตัว Method ต้อง Return ค่า Boolean = true or false
   shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.state.name);
+    console.log(nextState.name);
+
     if (nextState.name && nextState.name !== " ") {
       if (nextState.name === this.state.name) {
-        alert("คุณกรอกชื่อซ้ำ");
+        alert("Duplicate name, please use another!");
+        return false;
       } else {
-        let result = document.getElementById("result");
-        result.innerHTML += `<li> Previous Name : ${
-          this.state.name
-        } <br/> New Name : ${nextState.name} <br/> date : ${Date()} </li>`;
-
         return true;
       }
     } else {
-      this.setState({ name: "Unknown User" });
-      return false;
+      return this.setState({ name: `Unknown User` });
     }
-    // return nextState.name !== " " && nextState.name !== "" ? true : false
   }
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h1>{this.state.name}</h1>
-        <input type={"text"} style={{ width: "15%" }} id={"input"} />
-        <button
-          onClick={() => {
-            const value = document.getElementById("input").value;
-            this.setState({ name: value });
-          }}
-          style={{ width: "15%" }}
-        >
-          Change Your Name
-        </button>
-        <ul id="result"></ul>
-      </div>
+      <>
+        <div style={{ marginLeft: "15px" }}>
+          <h2>Welcome to My Website</h2>
+          <h1 style={{ color: "grey" }}>{this.state.name}</h1>
+
+          <label>
+            New Name:
+            <input
+              style={{ marginLeft: "10px" }}
+              type={"text"}
+              id={"input_name"}
+            />
+            <button
+              style={{ marginLeft: "10px" }}
+              onClick={() => {
+                const submit = document.getElementById("input_name").value;
+
+                this.setState({
+                  name: submit ? submit : "Unknown",
+                  history: [
+                    ...this.state.history,
+                    {
+                      previous: [this.state.name],
+                      current: [submit ? submit : "Unknown"],
+                      Date: Date(),
+                    },
+                  ],
+                });
+              }}
+            >
+              Change Your Name
+            </button>
+          </label>
+
+          <p>
+            {" "}
+            {this.state.history.map((x) => {
+              return (
+                <div>
+                  <p>Current Name: {x.previous}</p>
+                  <p>New Name: {x.current}</p>
+                  <p>Date : {x.Date}</p>
+                </div>
+              );
+            })}
+          </p>
+        </div>
+      </>
     );
   }
 }
+
+export default App;
