@@ -52,7 +52,7 @@ function Stock() {
   
   return (
     <>
-    <h1>you are not authorized to view this page</h1>
+    <h1>You are not authorized to view this page.</h1>
     <p><button
         onClick={() => {
           navigate("/");
