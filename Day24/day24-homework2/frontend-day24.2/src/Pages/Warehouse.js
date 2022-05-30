@@ -1,0 +1,35 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
+function Warehouse() {
+  let navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return (
+      <>
+        <h1>you are not authorized to view this page</h1>
+        <p><button
+          onClick={() => {
+            navigate("/");
+          }}>
+          {''}
+          Back to Homepage</button></p>
+      </>
+    )
+  } else {
+    return (
+      <div><h1>Warehouse Management</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p><button
+          onClick={() => {
+            navigate("/");
+          }}>
+          {''}
+          Back to Homepage</button></p>
+      </div>
+    )
+  }
+}
+
+export default Warehouse;

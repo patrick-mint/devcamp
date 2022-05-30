@@ -14,6 +14,13 @@ export default function Profile() {
    const token = localStorage.getItem('token');
 
    if (token) {
+    const token = localStorage.getItem('token');
+    //    decode token
+       var decoded = jwt_decode(token);
+       console.log(decoded);
+    //    call username by using useState 
+       const username = decoded.username; 
+       setUsername(username);
      axios
        .get('/api/profile', {
          headers: {
@@ -36,17 +43,6 @@ export default function Profile() {
    }
 
  }, []);
- 
- useEffect(() => {
-
- const token = localStorage.getItem('token');
- //    decode token
-    var decoded = jwt_decode(token);
-    console.log(decoded);
- //    call username by using useState 
-    const username = decoded.username; 
-    setUsername(username);  
-  })
 
  return (
    <>
