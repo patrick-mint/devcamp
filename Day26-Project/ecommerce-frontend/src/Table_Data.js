@@ -10,23 +10,23 @@ const columns = [
   {
     title: 'Photo',
     dataIndex: 'Photo',
-    key: 'Photo.id',
+    key: 'Photo',
   },
   {
     title: 'Product Name',
     dataIndex: 'Product_name',
-    key: 'Product_name.id',
+    key: 'Product_name',
     render: (x) => <a src={'/id:'}>{x}</a>,
   },
   {
     title: 'Stock Left',
     dataIndex: 'Stock_left',
-    key: 'Stock_left.id',
+    key: 'Stock_left',
   },
   {
     title: 'Category',
     dataIndex: 'Category',
-    key: 'Category.id',
+    key: 'Category',
   },
 
   {
