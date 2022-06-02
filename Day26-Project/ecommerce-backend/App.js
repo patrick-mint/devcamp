@@ -72,7 +72,7 @@ app.put("/api/product/:id", (req, res) => {
     connection.end();
 });
 
-app.delete("/api/product/:id", (req, res) => {
+  app.delete("/api/product/:id", (req, res) => {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',

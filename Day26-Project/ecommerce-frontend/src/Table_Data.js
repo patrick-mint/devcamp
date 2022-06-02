@@ -1,68 +1,76 @@
-import React , {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
-import { Table, Avatar } from 'antd';
+import { Table, Button } from 'antd';
 import axios from 'axios'
-import { UserOutlined } from '@ant-design/icons';
 
-
-const columns = [
-  {
-    title: 'Photo',
-    dataIndex: 'Photo',
-    key: 'Photo',
-  },
-  {
-    title: 'Product Name',
-    dataIndex: 'Product_name',
-    key: 'Product_name',
-    render: (x) => <a src={'/id:'}>{x}</a>,
-  },
-  {
-    title: 'Stock Left',
-    dataIndex: 'Stock_left',
-    key: 'Stock_left',
-  },
-  {
-    title: 'Category',
-    dataIndex: 'Category',
-    key: 'Category',
-  },
-
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <>
-        <a>Edit</a><br />
-        <a>Delete</a>
-      </>
-    ),
-  },
-];
-
-function Data () {
+function Data() {
   const [data, setData] = useState("");
+  const [check, setCheck] = useState(false);
+
+  const deleteProduct = async (id) => {
+    try {
+      await axios.delete(`/api/product/${id}`)
+      // ForceRender
+      setCheck(!check);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
-    axios.get("/api/product").then((response) => {setData(response.data)
+    axios.get("/api/product").then((response) => {
+      setData(response.data)
     });
     console.log(data);
-  },[]);
+  }, [check]);
 
-return (
-  <>
-    <Table columns={columns}
-      dataSource={data}
-      pagination={false} />
-    <a href="/create">
-      <button className="right">Create</button>
-    </a>
+  const columns = [
+    {
+      title: 'Photo',
+      dataIndex: 'Photo',
+      key: 'Photo',
+    },
+    {
+      title: 'Product Name',
+      dataIndex: 'product_name',
+      key: 'product_name',
+    },
+    {
+      title: 'Stock Left',
+      dataIndex: 'stock_left',
+      key: 'stock_left',
 
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+    },
 
-  </>
-)
+    {
+      title: 'Action',
+      key: 'action',
+      render: ((_, record) =>
+        <div>
+          <Button type="primary">Edit</Button>
+          <span style={{ marginLeft: "20px" }}><Button type="primary" danger onClick={() => deleteProduct(record.id)}>Delete</Button> </span>
+        </div>
+      ),
+    },
+  ];
+  return (
+    <>
+      <Table
+        rowKey={(data) => data.id}
+        columns={columns}
+        dataSource={data}
+        pagination={false} />
+      <a href="/create">
+        <Button type="primary" className="right">Create</Button>
+      </a>
+    </>
+  )
 }
-
 
 export default Data;
