@@ -10,14 +10,14 @@ import ErrorPage from './ErrorPage'
 function App() {
   return (
     <>
-<Router>
-          <Routes>
-            <Route path="/" element={<Table_Data/>} />
-            <Route path="/create" element={<RegisterForm />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-      
-</Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Table_Data />} />
+          <Route path="/create" element={<RegisterForm />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+
+      </Router>
     </>
   );
 }
