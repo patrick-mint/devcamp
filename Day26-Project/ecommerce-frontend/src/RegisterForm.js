@@ -11,10 +11,10 @@ const axios = require("axios");
 
 const layout = {
   labelCol: {
-    span: 6 ,
+    span: 8 ,
   },
   wrapperCol: {
-    span: 12,
+    span: 10,
   },
 };
 
@@ -86,7 +86,7 @@ const RegisterForm = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{span:20, offset: 10 }}>
-      <Button type="danger" htmlType="submit">
+      <Button style={{ margin : 10}} type="primary" htmlType="submit">
              Create
            </Button> 
            <Link style={{ margin : 10}} to="/"><button type="button"> Back to Dashboard </button></Link>

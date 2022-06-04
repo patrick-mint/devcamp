@@ -50,11 +50,11 @@ function Data() {
         <Avatar
           size={{
             xs: 24,
-            sm: 32,
-            md: 40,
-            lg: 64,
-            xl: 80,
-            xxl: 100,
+            sm: 28,
+            md: 32,
+            lg: 40,
+            xl: 60,
+            xxl: 80,
           }}
           icon={<AntDesignOutlined />}
         />
@@ -92,6 +92,7 @@ function Data() {
   ];
   return (
     <>
+    <h1 className="middle"> All Products</h1>
       <Table
         rowKey={(data) => data.id}
         columns={columns}
