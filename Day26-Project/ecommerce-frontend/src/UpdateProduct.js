@@ -1,35 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { createItems } from './productItems';
-import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 function UpdateProduct() {
     // const navigate = useNavigate();
     const product = useSelector((state) => state.product);
-    const {id} = useParams()
+    const { id } = useParams()
     const [data, setData] = useState({})
-    const [, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-    // const dispatch = useDispatch();
-    // setData(product.productList)
+
     useEffect(() => {
-        // console.log(product.productList);
         setData(product.productList[Number.parseInt(id)])
-        forceUpdate();
         // console.log(product.productList[Number.parseInt(id)]);
     }, [product.productList]);
 
-    const product_name = data.product_name;
-    const stock_left = data.stock_left;
-    const category = data.category;
+    const item = product.productList[Number.parseInt(id)];
+    const product_name = item.product_name;
+    const stock_left = item.stock_left;
+    const category = item.category;
 
-    console.log(product_name);
-    console.log(stock_left);
-    console.log(category);
-    
     const layout = {
         labelCol: {
             span: 8,
@@ -45,11 +36,11 @@ function UpdateProduct() {
         console.log(values);
         try {
             await axios.put(`/api/product/${data.id}`, {
-                    product_name: values.product_name,
-                    stock_left: values.stock_left,
-                    category: values.category
-                })
-                
+                product_name: values.product_name,
+                stock_left: values.stock_left,
+                category: values.category
+            })
+
         } catch (e) {
             console.log(e);
         }
@@ -69,23 +60,20 @@ function UpdateProduct() {
                 wrapperCol={{
                     span: 16,
                 }}
-            
-                // onFinish={onFinish}
-                // onFinishFailed={onFinishFailed}
+
                 autoComplete="off"
                 {...layout}
                 onFinish={onUpdateForm}
             >
                 <Form.Item
                     label="Product Name"
-                    
+
                     name="product_name"
                     rules={[
                         {
-                            required: true,
-                            message: 'Please input your Product Name!',
+                            required: true
                         },
-                    ]} 
+                    ]}
                     initialValue={`${product_name}`}
                 >
                     <Input />
@@ -96,13 +84,12 @@ function UpdateProduct() {
                     name="stock_left"
                     rules={[
                         {
-                            required: true,
-                            message: 'Please input your Stock Left!',
+                            required: true
                         },
                     ]}
                     initialValue={`${stock_left}`}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
 
                 <Form.Item
@@ -110,8 +97,7 @@ function UpdateProduct() {
                     name="category"
                     rules={[
                         {
-                            required: true,
-                            message: 'Please input your Product Category!',
+                            required: true
                         },
                     ]}
                     initialValue={`${category}`}
