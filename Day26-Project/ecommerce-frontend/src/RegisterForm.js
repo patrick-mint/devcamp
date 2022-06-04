@@ -2,6 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import {Form, Input, Button } from 'antd';
 import {useNavigate, Link} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { createItems } from './productItems';
 import './App.css';
 
 
@@ -16,8 +18,11 @@ const layout = {
   },
 };
 
+
 const RegisterForm = () => {
+  const create = useSelector((state) => state.product.productList);
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = (values) => {
     const myFunction = async ()=> {
       await axios.post("/api/product", {

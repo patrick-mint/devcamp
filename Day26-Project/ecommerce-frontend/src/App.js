@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import './App.css';
 import Table_Data from './Table_Data'
 import RegisterForm from './RegisterForm'
+import UpdateProduct from './UpdateProduct';
 import ErrorPage from './ErrorPage'
 
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Table_Data />} />
           <Route path="/create" element={<RegisterForm />} />
+          <Route path="/edit_product/:id" element={<UpdateProduct />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 

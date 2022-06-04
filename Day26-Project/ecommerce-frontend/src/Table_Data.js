@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/antd.css';
 import './index.css';
-import { Table, Button } from 'antd';
+import { Avatar, Table, Button } from 'antd';
 import axios from 'axios'
+import { AntDesignOutlined } from '@ant-design/icons';
+import { initData } from './productItems'
 
 function Data() {
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [check, setCheck] = useState(false);
+  const dispatch = useDispatch();
+  const display = useSelector(state => state.product);
+  const navigate = useNavigate()
 
   const deleteProduct = async (id) => {
     try {
@@ -19,17 +26,39 @@ function Data() {
   }
 
   useEffect(() => {
-    axios.get("/api/product").then((response) => {
-      setData(response.data)
-    });
-    console.log(data);
-  }, [check]);
+    axios.get("/api/product").then(result => dispatch(initData(result.data)))
+      .catch(e => console.log(e))
+  }, []);
+
+  useEffect(() => {
+    setData(display.productList)
+  }, [display.productList])
+
+  // Edit Product
+
+  const onEdit = (e, index) => {
+    e.preventDefault()
+    navigate(`/edit_product/${index}`)
+  }
 
   const columns = [
     {
       title: 'Photo',
       dataIndex: 'Photo',
       key: 'Photo',
+      render: () => (
+        <Avatar
+          size={{
+            xs: 24,
+            sm: 32,
+            md: 40,
+            lg: 64,
+            xl: 80,
+            xxl: 100,
+          }}
+          icon={<AntDesignOutlined />}
+        />
+      )
     },
     {
       title: 'Product Name',
@@ -51,9 +80,11 @@ function Data() {
     {
       title: 'Action',
       key: 'action',
-      render: ((_, record) =>
+      render: ((_, record, i) =>
         <div>
-          <Button type="primary">Edit</Button>
+          <Button type="primary" onClick={e => onEdit(e, i)}>
+            EDIT
+          </Button>
           <span style={{ marginLeft: "20px" }}><Button type="primary" danger onClick={() => deleteProduct(record.id)}>Delete</Button> </span>
         </div>
       ),
