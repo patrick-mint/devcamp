@@ -16,6 +16,7 @@ function Data() {
   const navigate = useNavigate()
 
   const deleteProduct = async (id) => {
+    window.confirm("Do you want to delete this item?")
     try {
       await axios.delete(`/api/product/${id}`)
       // ForceRender
