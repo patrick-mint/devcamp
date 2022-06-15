@@ -3,6 +3,7 @@ import Login from './components/Login';
 import { Routes, Route } from 'react-router-dom';
 import Profile from './components/Profile';
 import RegisterForm from './components/RegisterForm';
+import Logout from './components/Logout';
 
 function App() {
   return (<>
@@ -16,6 +17,7 @@ function App() {
        <Route path="/login" element={<Login />}></Route>
        <Route path="/profile" element={<Profile />}></Route>
        <Route path="/register" element={<RegisterForm />}></Route>
+       <Route path="/logout" element={<Logout />}></Route>
        </Routes>
 
         

@@ -30,6 +30,7 @@ function App() {
   likeCount : 0,
   commentCount : 23498,
 },
+
   ]
    return (
    <>

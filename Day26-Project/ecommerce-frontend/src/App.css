@@ -9,9 +9,25 @@ margin-left: 69.2%;
 margin-top: 2rem;
 
 }
+.center {
+  text-align: center;
+}
 
 .middle {
   text-align: center;
   padding: 0.5rem;
   background-color: #8CC0DE;
+  color: white;
+}
+
+.space {
+  margin-left : 2%;
+  font-size : 1 rem;
+  
+}
+
+.login {
+  display : flex;
+  justify-content : flex-end;
+  padding-right : 10px;
 }
